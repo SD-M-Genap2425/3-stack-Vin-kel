@@ -49,31 +49,26 @@ namespace Solution.BrowserHistory {
 
         public string TampilkanHistory() {
             if (top == null) {
-                return "";
-            }
+            return "";
+        }
 
-            List<string> urls = new List<string>();
-            Node current = top;
-            
-            while (current != null) {
-                urls.Add(current.Data.URL);
-                current = current.Next;
-            }
+        List<string> urls = new List<string>();
+        Node current = top;
+    
+        while (current != null) {
+            urls.Add(current.Data.URL);
+            current = current.Next;
+        }
 
-            string result = "";
-            
-            for (int i = 0; i < urls.Count; i++) {
-                result += urls[i];
-                if (i < urls.Count - 1) {
-                    result += Environment.NewLine;
-                }
-            }
+        urls.Reverse();
 
-            for (int i = 0; i < urls.Count; i++) {
-                Console.WriteLine($"{i+1}. {urls[i]}");
-            }
-            
-            return result;
+        string result = string.Join(Environment.NewLine, urls);
+
+        for (int i = 0; i < urls.Count; i++) {
+        Console.WriteLine($"{i+1}. {urls[i]}");
+        }
+
+        return result;
         }
     }
 }
