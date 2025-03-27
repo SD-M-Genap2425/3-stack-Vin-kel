@@ -47,7 +47,7 @@ namespace Solution.BrowserHistory {
             return top?.Data.URL;
         }
 
-        public string TampilkanHistory() {
+    public string TampilkanHistory() {
             if (top == null) {
             return "";
         }
@@ -58,17 +58,15 @@ namespace Solution.BrowserHistory {
         while (current != null) {
             urls.Add(current.Data.URL);
             current = current.Next;
-        }
+    }
 
         urls.Reverse();
 
-        string result = string.Join(Environment.NewLine, urls);
+        foreach (string url in urls) {
+            Console.WriteLine(url);
+    }   
 
-        for (int i = 0; i < urls.Count; i++) {
-        Console.WriteLine($"{i+1}. {urls[i]}");
-        }
-
-        return result;
+        return string.Join(Environment.NewLine, urls);
         }
     }
 }
